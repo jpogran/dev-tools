@@ -143,8 +143,8 @@ $itemsToInstall.GetEnumerator() | % {
   $destDir = Get-DestDir($rubyVersion)
 
   if (-not (Test-Path -Path $destDir)) {
-    $tempFile = Join-Path -path $ENV:Temp -ChildPath 'rubydl.7z'
-    $tempExtract = Join-Path -path $ENV:Temp -ChildPath 'rubydl_extracted'
+    $tempFile    = Join-Path -path $ENV:Temp -ChildPath "$($rubyVersion.Split(" ")[0]).7z"
+    $tempExtract = Join-Path -path $ENV:Temp -ChildPath "$($rubyVersion.Split(" ")[0])_extracted"
     if (Test-Path -Path $tempExtract) { Remove-Item -Path $tempExtract -Recurse -Confirm:$false -Force | Out-Null }
 
     Write-Host "Downloading from $rubyURL ..."
